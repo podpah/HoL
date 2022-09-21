@@ -9,7 +9,8 @@ public class Create {
 
     public static void createNewDatabase(String fileName) {
 
-        String url = "jdbc:sqlite:D:\\Programming\\Saves\\Java\\HoL\\src\\main\\java\\com\\example\\hol\\sqlite\\" + fileName;
+        String url = "jdbc:sqlite:D:\\Programming\\Saves\\Java\\HoL\\src\\main\\java\\com\\example\\hol\\sqlite\\" + fileName; //Windows
+        url = "jdbc:sqlite:/Users/dobu/IdeaProjects/HoL/src/main/java/com/example/hol/sqlite/" + fileName;  //Mac
 
         try {
             Connection conn = DriverManager.getConnection(url);

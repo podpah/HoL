@@ -10,7 +10,8 @@ public class Connect {
         Connection conn = null;
         try {
             // db parameters
-            String url = "jdbc:sqlite:C:\\Users\\User\\.m2\\repository\\org\\xerial\\sqlite-jdbc\\3.16.1\\sqlite-jdbc-3.16.1.pom";
+            String url = "jdbc:sqlite:C:\\Users\\User\\.m2\\repository\\org\\xerial\\sqlite-jdbc\\3.16.1\\sqlite-jdbc-3.16.1.pom"; //Windows
+            url = "jdbc:sqlite:/Users/dobu/.m2/repository/org/xerial/sqlite-jdbc/3.16.1/sqlite-jdbc-3.16.1.pom"; //Mac
             conn = DriverManager.getConnection(url);
 
             System.out.println("Connection to SQLite has been established.");
