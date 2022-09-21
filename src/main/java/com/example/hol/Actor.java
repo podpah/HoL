@@ -1,5 +1,7 @@
 package com.example.hol;
 
+//Download SQL cuz Mac + fix file paths cuz Mac
+
 import java.sql.*;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -11,6 +13,9 @@ public class Actor {
     String aname;
     int episodes;
     String image;
+
+    SelectRecords app = new SelectRecords();
+
 
     public Actor(String name, int ep, String img) {
 
@@ -27,9 +32,8 @@ public class Actor {
 
     public static void main(String[] args) { //Creating all the objects
 
-
-        SelectRecords gabbagoo = new SelectRecords();
-        gabbagoo.getVals();
+        SelectRecords app = new SelectRecords();
+        app.getVals();
 
         int[] res;
 
@@ -683,6 +687,9 @@ public class Actor {
                     if (uscore > res[z]) {
                         if (z == 0) {
                             System.out.println("You've beaten the top score! You are now the player with the highest score.");
+                            Scanner scan = new Scanner(System.in);
+                            String winner = scan.nextLine();
+                            app.changeVals(winner,uscore);
                         } else if (z == 1) {
                             System.out.println("You've beaten the second highest score. You are now ranked 2nd.");
                         } else if (z == 2) {
@@ -690,6 +697,8 @@ public class Actor {
                         }
                     }
                 }
+                System.out.println("High Scores:");
+                app.selectAll();
                 play = false;
                 break;
             }

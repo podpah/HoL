@@ -8,7 +8,8 @@ public class SelectRecords {
 
     private Connection connect() {
         // SQLite connection string
-        String url = "jdbc:sqlite:D:\\Programming\\Saves\\Java\\HoL\\src\\main\\java\\com\\example\\hol\\sqlite\\scoreb.db";
+        String url = "jdbc:sqlite:D:\\Programming\\Saves\\Java\\HoL\\src\\main\\java\\com\\example\\hol\\sqlite\\scoreb.db";//Windows
+        url = "jdbc:sqlite:/Users/dobu/IdeaProjects/HoL/src/main/java/com/example/hol/sqlite/scoreb.db";  //Mac
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
@@ -19,19 +20,29 @@ public class SelectRecords {
     }
 
     public void selectAll() {
-        String sql = "SELECT * FROM scoreboard";
+        int fix = 0; //WHY DIDN'T I THINK OF THIS EARLIER
+        //InsertRecords aappee = new InsertRecords();
+        String sql = "SELECT * FROM scoreboard ORDER BY score DESC LIMIT 3";
+        //String sql6= "SELECT name, score, RANK () OVER (ORDER BY score) pos FROM scoreboard";
+
 
         try {
             Connection conn = this.connect();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
+           //ResultSet rs2 = stmt.executeQuery(sql6);
 
             // loop through the result set
             while (rs.next()) {
-                System.out.println(rs.getInt("id") + "\t" +
+                fix++;
+                System.out.println(fix + "\t" +
                         rs.getString("name") + "\t" +
-                        rs.getInt("score"));
+                        rs.getInt("score") );
+
+                //RANK () OVER (ORDER BY score) pos
+                //aappee.insert(rs.getString("name"),rs.getInt("score"));
             }
+            //ResultSet rs2 = stmt.executeQuery(sql3);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -54,7 +65,7 @@ public class SelectRecords {
             while (rs.next()) {
                 //System.out.println(rs.getInt("score"));
                 res[i] = rs.getInt("score");
-                System.out.println(res[i]);
+                //System.out.println(res[i]);
                 i++;
 
             }
@@ -64,11 +75,13 @@ public class SelectRecords {
 
     }
 
-     public void changeVals1(String nam, int scor, int idd) { //This is to update queries
+     public void changeVals(String nam, int scor) { //This is to update queries
 
-        String sql = "";
+         InsertRecords appee = new InsertRecords();
 
-        if (idd == 3) {
+         String sql = "";
+
+        /*if (idd == 3) {
 
             sql = "UPDATE scoreboard SET name = '" + nam + "', score = " + scor + " WHERE id=" + idd ; //Was having trouble getting just the numbers data because
 
@@ -146,9 +159,22 @@ public class SelectRecords {
                 System.out.println(e.getMessage());
             }
 
-        }
+        }*/
 
-    }
+         appee.insert(nam,scor);
+
+         /*sql = "SELECT * FROM scoreboard ORDER BY score" ; //Was having trouble getting just the numbers data because
+
+         try {
+             Connection conn = this.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql);
+         } catch (SQLException e) {
+             System.out.println(e.getMessage());
+         }*/
+
+
+     }
 
     public void deleteDb() {
         String sql = "DELETE FROM scoreboard";
@@ -164,16 +190,15 @@ public class SelectRecords {
 
     public static void main (String[]args){
         InsertRecords appe = new InsertRecords();
-        appe.insert("Pedro", 97);
-        appe.insert("Also Pedro", 82);
-        appe.insert("Also Also Pedro", 70);
+
+        //appe.insert("Pedro", 98); appe.insert("Also Pedro", 82);  appe.insert("Also Also Pedro", 70);
 
         SelectRecords app = new SelectRecords();
         app.selectAll();
         //app.getVals();
-        app.changeVals1("Jordan", 87, 2);
+        //app.changeVals("Testing", 123);
         app.selectAll();
-        app.deleteDb();
+        //app.deleteDb();
     }
 
 }

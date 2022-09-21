@@ -9,7 +9,8 @@ public class CreateTable {
 
     public static void createNewTable() {
         // SQLite connection string
-        String url = "jdbc:sqlite:D:\\Programming\\Saves\\Java\\HoL\\src\\main\\java\\com\\example\\hol\\sqlite\\scoreb.db";
+        String url = "jdbc:sqlite:D:\\Programming\\Saves\\Java\\HoL\\src\\main\\java\\com\\example\\hol\\sqlite\\scoreb.db";    //Windows
+        url = "jdbc:sqlite:/Users/dobu/IdeaProjects/HoL/src/main/java/com/example/hol/sqlite/scoreb.db";  //Mac
 
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS scoreboard (\n"
