@@ -9,7 +9,7 @@ public class InsertRecords {
 
     private Connection connect() {
         String url = "jdbc:sqlite:D:\\Programming\\Saves\\Java\\HoL\\src\\main\\java\\com\\example\\hol\\sqlite\\scoreb.db";//Windows
-        url = "jdbc:sqlite:/Users/dobu/IdeaProjects/HoL/src/main/java/com/example/hol/sqlite/scoreb.db";  //Mac
+        //url = "jdbc:sqlite:/Users/dobu/IdeaProjects/HoL/src/main/java/com/example/hol/sqlite/scoreb.db";  //Mac
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
@@ -37,9 +37,8 @@ public class InsertRecords {
     public static void main(String[] args) {
 
         InsertRecords app = new InsertRecords();
-        app.insert("Pedro", 97);
-        app.insert("Also Pedro", 82);
-        app.insert("Also Also Pedro", 70);
+        //appe.insert("Podpah", 70); appe.insert("Also Podpah", 62);  appe.insert("Also Also Podpah", 49);
+
     }
 
 }
