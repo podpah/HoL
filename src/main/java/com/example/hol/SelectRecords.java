@@ -9,7 +9,7 @@ public class SelectRecords {
     private Connection connect() {
         // SQLite connection string
         String url = "jdbc:sqlite:D:\\Programming\\Saves\\Java\\HoL\\src\\main\\java\\com\\example\\hol\\sqlite\\scoreb.db";//Windows
-        url = "jdbc:sqlite:/Users/dobu/IdeaProjects/HoL/src/main/java/com/example/hol/sqlite/scoreb.db";  //Mac
+        //url = "jdbc:sqlite:/Users/dobu/IdeaProjects/HoL/src/main/java/com/example/hol/sqlite/scoreb.db";  //Mac
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
@@ -23,14 +23,15 @@ public class SelectRecords {
         int fix = 0; //WHY DIDN'T I THINK OF THIS EARLIER
         //InsertRecords aappee = new InsertRecords();
         String sql = "SELECT * FROM scoreboard ORDER BY score DESC LIMIT 3";
-        //String sql6= "SELECT name, score, RANK () OVER (ORDER BY score) pos FROM scoreboard";
+
+        //sql = "SELECT rnk, name , score FROM ( SELECT name , score , RANK() OVER (ORDER BY score DESC) rnk FROM scoreboard ) AS zzz WHERE rnk <= 3";
+        //This would've also worked, solved late (works on SQL not working on Java rn)
 
 
         try {
             Connection conn = this.connect();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-           //ResultSet rs2 = stmt.executeQuery(sql6);
 
             // loop through the result set
             while (rs.next()) {
@@ -51,10 +52,10 @@ public class SelectRecords {
 
     public void getVals() {
 
-        String sql = "SELECT score FROM scoreboard"; //Was having trouble getting just the numbers data because
+        String sql = "SELECT score FROM scoreboard ORDER BY score DESC LIMIT 3"; //Was having trouble getting just the numbers data because
 
-        res  = new int[999]; //Gotta increase it every time because SQL goes nuts.
-        //If I insert rank and delete everything with a rank below 3 it should be fixed, do it if I remember to check
+        res  = new int[99999]; //Gotta increase it every time because SQL goes nuts.
+        //If I insert rank and delete everything with a rank below 3 it should be fixed
 
         int i = 0;
 
@@ -193,14 +194,14 @@ public class SelectRecords {
     public static void main (String[]args){
         InsertRecords appe = new InsertRecords();
 
-        //appe.insert("Pedro", 98); appe.insert("Also Pedro", 82);  appe.insert("Also Also Pedro", 70);
-        //appe.insert("Pedro", 3); appe.insert("Also Pedro", 2);  appe.insert("Also Also Pedro", 1);
+        //appe.insert("Pedro", 70); appe.insert("Also Pedro", 62);  appe.insert("Also Also Pedro", 49);
+        //appe.insert("Pedro", 30); appe.insert("Also Pedro", 27);  appe.insert("Also Also Pedro", 23);
 
         SelectRecords app = new SelectRecords();
         app.selectAll();
         //app.getVals();
         //app.changeVals("Testing", 123);
-        app.selectAll();
+        //app.selectAll();
         //app.deleteDb();
     }
 

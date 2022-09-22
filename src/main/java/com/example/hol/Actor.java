@@ -637,7 +637,7 @@ public class Actor {
 
         /*Actor sto*/
         chars[97] = new Actor(
-                "Barney's Stormtrooper", 1,
+                "Barney's Stormtrooper", 12,
                 "https://imgs.search.brave.com/ehtOGvWzQa2EL2XWGm04bYY66CsYmkAWBEgqHWKs7pc/rs:fit:835:650:1/g:ce/aHR0cHM6Ly93d3cu/ZnJvbXRoZW1vdmll/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAxNi8xMi9TdGFy/LVdhcnMtU3Rvcm10/cm9vcGVyLUJhcm5l/eS1TdGluc29uLWlu/LUhvdy1JLU1ldC1Z/b3VyLU1vdGhlci5q/cGc"
         );
 
@@ -684,19 +684,33 @@ public class Actor {
             Actor r2 = chars[randomNum2];
 
             if (lives == 0) {
+
                 System.out.println("The game has finished. You have ended the game with " + uscore + " points.");
                 for (int z = 0; z < 3; z++ ) {
+
                     if (uscore > res[z]) {
+
                         if (z == 0) {
                             System.out.println("You've beaten the top score! You are now the player with the highest score.");
+                            System.out.print("Name the champion:  ");
                             Scanner scan = new Scanner(System.in);
                             String winner = scan.nextLine();
                             app.changeVals(winner,uscore);
                             break;
                         } else if (z == 1) {
                             System.out.println("You've beaten the second highest score. You are now ranked 2nd.");
+                            System.out.print("Insert name:  ");
+                            Scanner scan = new Scanner(System.in);
+                            String winner = scan.nextLine();
+                            app.changeVals(winner,uscore);
+                            break;
                         } else if (z == 2) {
                             System.out.println("You've beaten the third highest score. You are now ranked 3rd.");
+                            System.out.print("Insert name:  ");
+                            Scanner scan = new Scanner(System.in);
+                            String winner = scan.nextLine();
+                            app.changeVals(winner,uscore);
+                            break;
                         }
                     }
                 }
