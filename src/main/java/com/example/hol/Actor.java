@@ -6,7 +6,9 @@ import java.sql.*;
 import java.util.Arrays;
 import java.util.Scanner;
 //Me of the future, I just want to say I am sorry and blame it on Java
-//Partial credit on the project goes to Jordan
+
+//If I insert rank and delete everything with a rank below 3 it should be fixed, do it if I remember to check
+
 
 public class Actor {
 
@@ -690,6 +692,7 @@ public class Actor {
                             Scanner scan = new Scanner(System.in);
                             String winner = scan.nextLine();
                             app.changeVals(winner,uscore);
+                            break;
                         } else if (z == 1) {
                             System.out.println("You've beaten the second highest score. You are now ranked 2nd.");
                         } else if (z == 2) {

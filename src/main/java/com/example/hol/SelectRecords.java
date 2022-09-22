@@ -48,11 +48,13 @@ public class SelectRecords {
         }
     }
 
+
     public void getVals() {
 
         String sql = "SELECT score FROM scoreboard"; //Was having trouble getting just the numbers data because
 
-        res = new int[3];
+        res  = new int[999]; //Gotta increase it every time because SQL goes nuts.
+        //If I insert rank and delete everything with a rank below 3 it should be fixed, do it if I remember to check
 
         int i = 0;
 
@@ -192,6 +194,7 @@ public class SelectRecords {
         InsertRecords appe = new InsertRecords();
 
         //appe.insert("Pedro", 98); appe.insert("Also Pedro", 82);  appe.insert("Also Also Pedro", 70);
+        //appe.insert("Pedro", 3); appe.insert("Also Pedro", 2);  appe.insert("Also Also Pedro", 1);
 
         SelectRecords app = new SelectRecords();
         app.selectAll();
